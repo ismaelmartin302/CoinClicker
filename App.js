@@ -1,9 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import '@expo/metro-runtime'
-import React, { useRef } from 'react';
-import { StyleSheet, View, Image, Pressable, Animated } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import "@expo/metro-runtime";
+import React, { useRef } from "react";
+import { StyleSheet, View, Image, Pressable, Animated } from "react-native";
 
-const image1 = require('./assets/coin.svg');
+const coinPressableImage = require("./assets/coin.svg");
 
 export default function App() {
   const animatedValue = useRef(new Animated.Value(0)).current;
@@ -31,8 +31,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Pressable onPress={handlePress}>
-        <Animated.View style={{ width: sizeInterpolation, height: sizeInterpolation }}>
-          <Image source={image1} style={styles.image} />
+        <Animated.View
+          style={{ width: sizeInterpolation, height: sizeInterpolation }}
+        >
+          <Image source={coinPressableImage} style={styles.image} />
         </Animated.View>
       </Pressable>
       <StatusBar style="auto" />
@@ -43,14 +45,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#202020',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#202020",
+    alignItems: "center",
+    justifyContent: "center",
   },
   image: {
-    width: '100%',
-    height: '100%',
-    resizeMode: 'contain',
-    imageRendering: 'pixelated',
+    width: "100%",
+    height: "100%",
+    resizeMode: "contain",
+    imageRendering: "pixelated",
   },
 });
