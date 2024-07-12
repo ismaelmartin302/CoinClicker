@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
+import '@expo/metro-runtime'
 import React, { useRef } from 'react';
 import { StyleSheet, View, Image, Pressable, Animated } from 'react-native';
 
-const image1 = require('./assets/favicon.png');
+const image1 = require('./assets/coin.svg');
 
 export default function App() {
   const animatedValue = useRef(new Animated.Value(0)).current;
