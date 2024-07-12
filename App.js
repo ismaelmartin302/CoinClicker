@@ -1,12 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import "@expo/metro-runtime";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { StyleSheet, View, Image, Pressable, Animated } from "react-native";
+import { Text } from "react-native-web";
 
 const coinPressableImage = require("./assets/coin.svg");
 
 export default function App() {
   const animatedValue = useRef(new Animated.Value(0)).current;
+  const [totalPoints, setTotalPoints] = useState(0);
 
   const handlePress = () => {
     Animated.sequence([
@@ -21,6 +23,7 @@ export default function App() {
         useNativeDriver: false,
       }),
     ]).start();
+    setTotalPoints(totalPoints + 1);
   };
 
   const sizeInterpolation = animatedValue.interpolate({
@@ -30,6 +33,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text>{totalPoints}</Text>
       <Pressable onPress={handlePress}>
         <Animated.View
           style={{ width: sizeInterpolation, height: sizeInterpolation }}
