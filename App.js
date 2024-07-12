@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import 'bootstrap/dist/css/bootstrap.css';
+import '@expo/metro-runtime';
 
 export default function App() {
   return (
