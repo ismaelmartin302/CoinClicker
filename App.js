@@ -1,13 +1,18 @@
 import "@expo/metro-runtime";
 import React, { useRef, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { StyleSheet, View, Image, Pressable, Animated } from "react-native";
 import { ScrollView, Text } from "react-native-web";
+import { faCoins } from "@fortawesome/free-solid-svg-icons";
 
 const coinPressableImage = require("./assets/coin.svg");
-
+const backgroundColor = "#202020";
+const textColor = "#f5f5f5";
+const highlightColor = "#ffe95e";
 export default function App() {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const [totalPoints, setTotalPoints] = useState(0);
+  const [exponentValue] = useState(1);
 
   const handlePress = () => {
     Animated.sequence([
@@ -22,7 +27,7 @@ export default function App() {
         useNativeDriver: false,
       }),
     ]).start();
-    setTotalPoints(totalPoints + 1);
+    setTotalPoints(totalPoints + exponentValue);
   };
 
   const sizeInterpolation = animatedValue.interpolate({
@@ -34,7 +39,13 @@ export default function App() {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.sectionStats}>
-          <Text>{totalPoints}</Text>
+          <View style={styles.sectionStatsStat}>
+            <FontAwesomeIcon
+              icon={faCoins}
+              style={styles.sectionStatsStatIcon}
+            />
+            <Text style={styles.sectionStatsStatText}>{totalPoints}</Text>
+          </View>
         </View>
       </View>
       <View style={styles.main}>
@@ -66,7 +77,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: "5em",
-    backgroundColor: "#202020",
+    backgroundColor: backgroundColor,
     width: "100%",
     height: "100%",
     // alignItems: "center",
@@ -96,6 +107,13 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 20,
     // shadowOpacity: 0.5,
   },
+  sectionStatsStat: {
+    flexDirection: "row",
+    gap: "0.5em",
+    alignItems: "center",
+  },
+  sectionStatsStatIcon: { color: highlightColor },
+  sectionStatsStatText: { color: textColor },
   sectionPressable: {
     minHeight: "10em",
   },

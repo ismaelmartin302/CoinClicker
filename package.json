@@ -11,12 +11,17 @@
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-native-fontawesome": "^0.3.2",
     "bootstrap": "^5.3.3",
     "expo": "~51.0.20",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
+    "react-bootstrap-icons": "^1.11.4",
     "react-dom": "18.2.0",
     "react-native": "0.74.3",
+    "react-native-svg": "^15.4.0",
     "react-native-web": "~0.19.10"
   },
   "devDependencies": {
