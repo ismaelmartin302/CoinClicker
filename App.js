@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import "@expo/metro-runtime";
 import React, { useRef, useState } from "react";
 import { StyleSheet, View, Image, Pressable, Animated } from "react-native";
@@ -48,24 +47,14 @@ export default function App() {
             </Animated.View>
           </Pressable>
         </View>
-        <ScrollView style={styles.sectionElements}>
+        <ScrollView
+          style={styles.sectionElementsScroll}
+          showsVerticalScrollIndicator={false}
+        >
           <View style={styles.sectionElements}>
             <View style={styles.sectionElementsElement}></View>
             <View style={styles.sectionElementsElement}></View>
             <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <View style={styles.sectionElementsElement}></View>
-            <Text>Open up App.js to start working on your app!</Text>
           </View>
         </ScrollView>
       </View>
@@ -95,6 +84,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-around",
     flex: 4,
+    paddingStart: "1em",
+    paddingEnd: "1em",
   },
   sectionStats: {
     width: "fit-content",
@@ -105,15 +96,21 @@ const styles = StyleSheet.create({
     borderBottomEndRadius: 20,
     // shadowOpacity: 0.5,
   },
-  sectionPressable: {},
-  sectionElements: {
+  sectionPressable: {
+    minHeight: "10em",
+  },
+  sectionElementsScroll: {
     width: "100%",
+    shadowRadius: 20,
+    borderRadius: 20,
+    marginBottom: "1em",
+  },
+  sectionElements: {
     gap: "1em",
     shadowRadius: 20,
     borderRadius: 20,
   },
   sectionElementsElement: {
-    width: "100%",
     minHeight: "10em",
     padding: "1em",
     shadowRadius: 20,
