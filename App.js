@@ -2,7 +2,7 @@ import "@expo/metro-runtime";
 import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { StyleSheet, View, Image, Pressable, Animated } from "react-native";
-import { Button, ScrollView, Text } from "react-native-web";
+import { ScrollView, Text } from "react-native-web";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 
 const coinPressableImage = require("./assets/coin.svg");
@@ -13,7 +13,9 @@ const highlightColorDarken = "#4a4a4a";
 export default function App() {
   const animatedValue = useRef(new Animated.Value(0)).current;
   const [totalPoints, setTotalPoints] = useState(0);
-  const [exponentValue] = useState(1);
+  const [moneyCostElement1, incrementMoneyCostElement1] = useState(10);
+  const [countElement1, incrementCountElement1] = useState(0);
+  var exponentValue = 1 + countElement1;
 
   const handlePress = () => {
     Animated.sequence([
@@ -29,6 +31,13 @@ export default function App() {
       }),
     ]).start();
     setTotalPoints(totalPoints + exponentValue);
+  };
+  const handlePressElement1 = () => {
+    if (totalPoints >= moneyCostElement1) {
+      setTotalPoints(totalPoints - moneyCostElement1);
+      incrementMoneyCostElement1(moneyCostElement1 * 1.2);
+      incrementCountElement1(countElement1 + 1);
+    }
   };
 
   const sizeInterpolation = animatedValue.interpolate({
@@ -63,7 +72,28 @@ export default function App() {
           <View style={styles.secElem}>
             <View style={styles.secElemEleme}>
               <View style={styles.secElemElemeShop}>
-                <Pressable style={styles.secElemElemeShopBtn}>
+                <View style={styles.secElemElemeShopStats}>
+                  <View style={styles.secElemElemeShopStatsStat}>
+                    <FontAwesomeIcon
+                      icon={faCoins}
+                      style={styles.secStatsStatIcon}
+                    />
+                    <Text style={styles.secStatsStatTxt}>
+                      {moneyCostElement1}
+                    </Text>
+                  </View>
+                  <View style={styles.secElemElemeShopStatsStat}>
+                    <FontAwesomeIcon
+                      icon={faCoins}
+                      style={styles.secStatsStatIcon}
+                    />
+                    <Text style={styles.secStatsStatTxt}>{countElement1}</Text>
+                  </View>
+                </View>
+                <Pressable
+                  style={styles.secElemElemeShopBtn}
+                  onPress={handlePressElement1}
+                >
                   <Text style={styles.secElemElemeShopBtnTxt}>Comprar x1</Text>
                 </Pressable>
                 <View style={styles.secElemElemeShopMultpl}>
