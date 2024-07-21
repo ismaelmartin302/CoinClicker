@@ -51,7 +51,9 @@ export default function App() {
         <View style={styles.secStats}>
           <View style={styles.secStatsStat}>
             <FontAwesomeIcon icon={faCoins} style={styles.secStatsStatIcon} />
-            <Text style={styles.secStatsStatTxt}>{totalPoints}</Text>
+            <Text style={styles.secStatsStatTxt}>
+              {Math.round(totalPoints)}
+            </Text>
           </View>
         </View>
       </View>
@@ -79,7 +81,7 @@ export default function App() {
                       style={styles.secStatsStatIcon}
                     />
                     <Text style={styles.secStatsStatTxt}>
-                      {moneyCostElement1}
+                      {Math.round(moneyCostElement1)}
                     </Text>
                   </View>
                   <View style={styles.secElemElemeShopStatsStat}>
@@ -87,7 +89,9 @@ export default function App() {
                       icon={faCoins}
                       style={styles.secStatsStatIcon}
                     />
-                    <Text style={styles.secStatsStatTxt}>{countElement1}</Text>
+                    <Text style={styles.secStatsStatTxt}>
+                      {Math.round(countElement1)}
+                    </Text>
                   </View>
                 </View>
                 <Pressable
